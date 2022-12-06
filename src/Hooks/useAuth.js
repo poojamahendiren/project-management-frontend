@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import dotenv from "dotenv";
 
 export default function useAuth ()  {
   const [auth, setAuth] = useState();
