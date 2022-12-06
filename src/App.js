@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import {Toaster} from 'react-hot-toast';
+import {Routes,Route} from 'react-router-dom';
+import Home from './Routes/Home';
+import EditProfile from './Routes/EditProfile';
+import Auth from './Routes/Auth';
+import PrivateRoutes from './components/PrivateRoutes';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Toaster
+     position="top-right"
+     toastOptions={{
+       style: {
+         fontSize: '1.8rem',
+       },
+     }}
+    />
+    <Routes>
+        <Route element={<PrivateRoutes />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/edit-profile" element={<EditProfile />} />
+        </Route>
+        <Route path="/auth" element={<Auth />} />
+      </Routes>
+    </>
   );
 }
 
